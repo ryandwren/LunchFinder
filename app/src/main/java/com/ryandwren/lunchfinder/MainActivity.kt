@@ -30,7 +30,9 @@ import androidx.navigation.compose.rememberNavController
 import com.ryandwren.lunchfinder.ui.ListScreen
 import com.ryandwren.lunchfinder.ui.MapScreen
 import com.ryandwren.lunchfinder.ui.theme.LunchFinderTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
