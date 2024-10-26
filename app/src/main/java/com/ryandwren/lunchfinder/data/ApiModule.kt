@@ -14,21 +14,25 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiModule {
-    val baseUrl = "https://maps.googleapis.com/maps/api/place"
+    private const val BASEURL = "https://maps.googleapis.com/maps/api/place"
 
     @Provides
     @Singleton
     fun provideRetrofitBuilder(): Retrofit.Builder {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .client(OkHttpClient.Builder().build())
+            .client(
+                OkHttpClient.Builder()
+                    .addInterceptor(AuthInterceptor()) //Inject API key into headers.
+                    .build()
+            )
     }
 
     @Provides
     @Singleton
     fun providePlacesApi(retrofit: Retrofit.Builder): PlacesAPI {
         return retrofit
-            .baseUrl(baseUrl)
+            .baseUrl(BASEURL)
             .build()
             .create(PlacesAPI::class.java)
     }
