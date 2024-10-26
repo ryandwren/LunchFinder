@@ -6,8 +6,8 @@ import okhttp3.Response
 
 class AuthInterceptor: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        val requestBuilder = chain.request().newBuilder()
-        requestBuilder.addHeader("key", BuildConfig.googlePlacesAPIKey)
-        return chain.proceed(requestBuilder.build())
+        val urlAppended = chain.request().url().newBuilder()
+        urlAppended.addQueryParameter("key", BuildConfig.googlePlacesAPIKey)
+        return chain.proceed(chain.request().newBuilder().url(urlAppended.build()).build())
     }
 }

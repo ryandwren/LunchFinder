@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MapScreen(){
+fun MapScreen(state: LunchState){
     Box(
         modifier = Modifier.fillMaxSize().padding(top = 30.dp),
         contentAlignment = Alignment.Center

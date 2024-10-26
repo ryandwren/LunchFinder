@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiModule {
-    private const val BASEURL = "https://maps.googleapis.com/maps/api/place"
+    private const val BASEURL = "https://maps.googleapis.com/maps/api/place/"
 
     @Provides
     @Singleton
